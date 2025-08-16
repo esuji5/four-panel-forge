@@ -1,0 +1,335 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-color: #fcfcff;
+}
+
+/* 結合画像の4分割表示用 */
+.combined-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+h3 {
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+h4 {
+  margin-top: 0.3rem;
+  margin-bottom: 0.1rem;
+  font-size: 0.85rem;
+}
+textarea {
+  width: 100%;
+  height: 2.4rem;
+  font-size: 11px;
+  padding: 3px;
+  line-height: 1.2;
+}
+.container {
+  font-family: Arial, sans-serif;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 12px;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.annotator-content {
+  width: calc(100% - 50px) !important;
+  margin: 0 0 0 50px !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* Bulmaフレームワークのcontainerクラスを強制上書き */
+div.container, 
+.container.is-fullwidth,
+#root {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 全ての親要素からpadding/marginを除去 */
+body > div,
+#root > div {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.annotator-content .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  background-color: #8a7ad5;
+  font-size: 12px;
+  height: 40px;
+}
+
+.main-content {
+  margin-top: 42px; /* ヘッダーの高さを考慮 */
+  overflow-y: auto;
+  max-height: calc(100vh - 45px);
+}
+
+/* タブがヘッダーに隠れないように */
+.tabs {
+  margin-top: 45px !important;
+}
+
+.koma-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  width: 100%;
+}
+
+.koma-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 3px;
+  border: 1px solid #ddd;
+  padding: 3px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.koma-image-section {
+  flex-shrink: 0;
+  width: 280px;
+  text-align: center;
+  padding-right: 25px;
+}
+
+.koma-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.koma-image-section img {
+  width: 260px;
+  height: auto;
+  border: 1px solid #ccc;
+  margin: 2px 0;
+}
+
+.koma-number {
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 11px;
+  font-weight: bold;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 3px 2px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.koma-data-form {
+  flex-grow: 1;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* キャラクターグリッド */
+.character-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 3px;
+  justify-content: flex-end;
+}
+
+.character-card {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 4px;
+  background-color: #fff;
+  width: 280px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.character-card h4 {
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #333;
+  font-size: 0.75rem;
+}
+
+/* 3列グリッドの行 */
+.character-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+/* セリフ用の全幅行 */
+.serif-row {
+  margin-bottom: 3px;
+}
+
+.serif-row input {
+  width: 100%;
+}
+
+/* ボタン行 */
+.button-row {
+  display: flex;
+  gap: 1px;
+  justify-content: flex-start;
+}
+
+.button-row button {
+  padding: 0px 4px;
+  font-size: 10px;
+}
+
+/* チェックボックスラベル */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  white-space: nowrap;
+  font-size: 10px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  height: auto;
+}
+
+/* シーン情報セクション */
+.scene-section {
+  margin-top: 3px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scene-section h4 {
+  margin: 0;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+.scene-row {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.scene-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.koma-data-form input {
+  padding: 2px 3px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 12px;
+  height: 22px;
+  min-width: 0;
+  width: 100%;
+}
+
+.koma-data-form input:focus {
+  outline: none;
+  border-color: #9781ff;
+}
+.summary-section {
+  margin-bottom: 20px;
+}
+
+.discussion-section button {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .koma-container {
+    flex-direction: column;
+  }
+
+  .koma-image-section {
+    width: 100%;
+  }
+
+  .koma-data-form {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+  
+  .character-card {
+    width: 100%;
+  }
+  
+  .character-row,
+  .scene-row {
+    grid-template-columns: 1fr;
+  }
+}
+.blur {
+  -ms-filter: blur(6px);
+  filter: blur(6px);
+}
+
+/* ボタンのスタイル */
+.btn {
+  padding: 2px 8px;
+  font-size: 11px;
+  transition: opacity 0.2s;
+}
+
+.btn-sm {
+  padding: 0px 4px;
+  font-size: 9px;
+  transition: opacity 0.2s;
+}
+
+/* 無効化されたボタン */
+.btn:disabled,
+.btn-sm:disabled,
+.btn-outline:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 入力欄のnumber typeの調整 */
+input[type="number"] {
+  width: 60px;
+  padding: 2px 5px;
+}
