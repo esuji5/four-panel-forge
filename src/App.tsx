@@ -1012,7 +1012,7 @@ const App: React.FC = () => {
             onClose={() => setShowDiffViewer(false)}
           />
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
