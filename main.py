@@ -66,8 +66,10 @@ def fetch_gemini_response_base64_direct_api(prompt, base64_image, original_image
     query_dir = f"tmp/api_queries/gemini_direct_api_{timestamp}"
     os.makedirs(query_dir, exist_ok=True)
 
-    # APIキーを取得（フォールバック方式） - 一時的に直接指定
-    final_api_key = "AIzaSyC9DUiCaiNINeoOiI1YDIqVWrSIFfVVBBs"
+    # APIキーを取得（フォールバック方式）
+    final_api_key = env_api_key or api_key
+    if not final_api_key:
+        raise ValueError("Google API キーが設定されていません。.env ファイルで GOOGLE_API_KEY を設定してください。")
     log_with_time(f"🔑 最終使用APIキー: {final_api_key[:20]}...", level="DEBUG")
     log_with_time(f"🔑 完全なAPIキー: {final_api_key}", level="DEBUG")
 
